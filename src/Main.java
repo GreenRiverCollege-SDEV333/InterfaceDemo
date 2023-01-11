@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -32,16 +34,38 @@ public class Main {
         };
 
         System.out.println(average(accounts));
+
+        System.out.println(average(countries));
+
+        // Allowed
+        Measurable m1 = new Country("TinaLand", 4);
+        Measurable m2 = new BankAccount(100.00);
+
+        // Not Allowed - cannot create Measurable objects
+        // Measurable m3 = new Measurable() ;
+
+        Measurable[] items = {
+                new BankAccount(10),
+                new Country("JoshLand", 10),
+                new BankAccount(2)
+        };
+
+        // sort an array?
+        Arrays.sort(accounts);
+
     }
 
-    // new method to find the average of a BankAccout array
-    public static double average(BankAccount[] theAccounts) {
-        double sum = 0.0;
-        for (BankAccount single : theAccounts) {
-            sum += single.getBalance();
-        }
 
-        double result = sum / theAccounts.length;
-        return result;
+
+    public static double average(Measurable[] theThings) {
+        double sum = 0.0;
+        for (int i = 0; i < theThings.length; i++) {
+            sum += theThings[i].getValue();
+        }
+        return sum / theThings.length;
     }
 }
+
+
+// CANNOT DO THIS   vvv ILLEGAL vvvv
+// Measurable m1 = new Measurable()

@@ -1,4 +1,4 @@
-public class Country {
+public class Country implements Measurable {
     private String name;
     private double area;
 
@@ -13,5 +13,10 @@ public class Country {
 
     public double getArea() {
         return this.area;
+    }
+
+    @Override
+    public double getValue() {
+        return area;
     }
 }
